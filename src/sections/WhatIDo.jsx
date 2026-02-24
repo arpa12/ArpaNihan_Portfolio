@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SummaryScene from "../components/SummaryScene";
+import { Suspense, lazy } from "react";
+const SummaryScene = lazy(() => import("../components/SummaryScene"));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -78,7 +79,10 @@ const WhatIDo = () => {
     >
       {/* 3D Background */}
       <div className="absolute inset-0 z-0 opacity-20">
-        <SummaryScene />
+        <Suspense fallback={<div className="w-full h-full bg-black" />}>
+          {" "}
+          <SummaryScene />{" "}
+        </Suspense>
       </div>
 
       {/* Content Container */}

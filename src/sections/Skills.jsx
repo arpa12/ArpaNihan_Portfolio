@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SummaryScene from "../components/SummaryScene";
+import { Suspense, lazy } from "react";
+const SummaryScene = lazy(() => import("../components/SummaryScene"));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -120,42 +121,44 @@ const Skills = () => {
     <section
       ref={sectionRef}
       id="skills"
-      className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black py-20"
+      className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black py-8"
     >
       {/* 3D Background */}
       <div className="absolute inset-0 z-0 opacity-20">
-        <SummaryScene />
+        <Suspense fallback={<div className="w-full h-full bg-black" />}>
+          <SummaryScene />
+        </Suspense>
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 lg:px-24">
+      <div className="relative z-10 max-w-5xl mx-auto px-2 sm:px-4 lg:px-8">
         {/* Section Title */}
-        <div ref={titleRef} className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
+        <div ref={titleRef} className="text-center mb-8">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
             Technical{" "}
             <span className="bg-gradient-to-r from-indigo-500 to-cyan-500 bg-clip-text text-transparent">
               Skills
             </span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-cyan-500 mx-auto rounded-full"></div>
-          <p className="mt-6 text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="mt-2 text-gray-400 text-base max-w-2xl mx-auto">
             Comprehensive technical stack and expertise
           </p>
         </div>
 
         {/* Skills List as single line per category */}
-        <div ref={categoriesRef} className="space-y-4">
+        <div ref={categoriesRef} className="space-y-2">
           {skillCategories.map((category, index) => (
             <div
               key={index}
-              className="skill-category bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-2xl p-6 hover:border-indigo-500/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-indigo-500/20"
+              className="skill-category bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-2xl p-3 hover:border-indigo-500/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/20"
             >
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-2xl">{category.icon}</span>
-                <span className="text-lg font-semibold text-white">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-xl">{category.icon}</span>
+                <span className="text-base font-semibold text-white">
                   {category.title}
                 </span>
-                <span className="text-gray-400 text-base">
+                <span className="text-gray-400 text-sm">
                   ({category.skills.join(", ")})
                 </span>
               </div>

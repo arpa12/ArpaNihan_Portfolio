@@ -13,7 +13,7 @@ function FloatingBoxes() {
 
   return (
     <group ref={group}>
-      {[...Array(15)].map((_, i) => (
+      {[...Array(7)].map((_, i) => (
         <FloatingBox
           key={i}
           position={[

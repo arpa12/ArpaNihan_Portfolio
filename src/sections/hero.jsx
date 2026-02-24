@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import profileImage from "../assets/profileImage.png";
-import HeroScene from "../components/HeroScene";
+import { Suspense, lazy } from "react";
+const HeroScene = lazy(() => import("../components/HeroScene"));
 
 const Hero = () => {
   const titleRef = useRef(null);
@@ -51,7 +52,10 @@ const Hero = () => {
     >
       {/* 3D Background */}
       <div className="absolute inset-0 z-0 opacity-30">
-        <HeroScene />
+        <Suspense fallback={<div className="w-full h-full bg-black" />}>
+          {" "}
+          <HeroScene />{" "}
+        </Suspense>
       </div>
 
       {/* Content Container */}
