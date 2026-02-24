@@ -92,14 +92,22 @@ const Hero = () => {
               ref={ctaRef}
               className="flex gap-2 sm:gap-3 justify-center lg:justify-start"
             >
-              <button className="px-3 sm:px-5 py-2 text-sm sm:text-base bg-gradient-to-r from-indigo-600 to-cyan-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300 hover:scale-105 whitespace-nowrap">
-                View Projects
-              </button>
-              <button className="px-3 sm:px-5 py-2 text-sm sm:text-base border-2 border-indigo-500 text-indigo-400 rounded-full font-semibold hover:bg-indigo-500/10 transition-all duration-300 hover:scale-105 whitespace-nowrap">
-                Contact Me
-              </button>
               <a
-                href="/resume.pdf"
+                href="#featured-projects"
+                className="px-3 sm:px-5 py-2 text-sm sm:text-base bg-gradient-to-r from-indigo-600 to-cyan-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300 hover:scale-105 whitespace-nowrap"
+              >
+                View Projects
+              </a>
+              <a
+                href="https://www.linkedin.com/in/arpanihan/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 sm:px-5 py-2 text-sm sm:text-base border-2 border-indigo-500 text-indigo-400 rounded-full font-semibold hover:bg-indigo-500/10 transition-all duration-300 hover:scale-105 whitespace-nowrap"
+              >
+                Contact Me
+              </a>
+              <a
+                href="/src/assets/resume.pdf"
                 download="Arpa_Nihan_Resume.pdf"
                 className="px-3 sm:px-5 py-2 text-sm sm:text-base bg-gradient-to-r from-indigo-600 to-cyan-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105 flex items-center gap-1 sm:gap-2 whitespace-nowrap"
               >
@@ -123,7 +131,7 @@ const Hero = () => {
           </div>
 
           {/* Right Side - Profile Image */}
-          <div className="flex justify-center lg:justify-start">
+          <div className="flex justify-end lg:justify-end pr-4">
             <div
               ref={imageRef}
               className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96"

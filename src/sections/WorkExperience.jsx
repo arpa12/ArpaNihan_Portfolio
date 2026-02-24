@@ -44,9 +44,9 @@ const WorkExperience = () => {
 
   const experiences = [
     {
-      title: "Senior Full Stack Developer",
-      company: "Tech Solutions Inc.",
-      period: "2023 - Present",
+      title: "Junior Software Developer",
+      company: "Business Automation Ltd.",
+      period: "11/2023 – present",
       responsibilities: [
         "Led development of 5+ enterprise web applications using React and Laravel",
         "Mentored junior developers and conducted code reviews",
@@ -57,9 +57,9 @@ const WorkExperience = () => {
         "Promoted from Mid-Level after 8 months for exceptional performance",
     },
     {
-      title: "Full Stack Developer",
-      company: "Digital Innovations Ltd.",
-      period: "2021 - 2023",
+      title: "Software Developer-fresher",
+      company: "Cloud Production Ltd.",
+      period: "03/2023 – 10/2023",
       responsibilities: [
         "Developed and maintained 10+ client projects from concept to deployment",
         "Integrated third-party APIs and payment gateways (Stripe, PayPal)",
@@ -68,19 +68,6 @@ const WorkExperience = () => {
       ],
       growth:
         "Increased project delivery efficiency by 40% through process optimization",
-    },
-    {
-      title: "Junior Web Developer",
-      company: "Creative Web Agency",
-      period: "2020 - 2021",
-      responsibilities: [
-        "Built responsive websites using HTML, CSS, JavaScript, and React",
-        "Assisted in backend development with Laravel and MySQL",
-        "Participated in daily standups and agile development processes",
-        "Gained hands-on experience with version control (Git) and team collaboration",
-      ],
-      growth:
-        "Achieved fastest learning curve in company history - promoted within 10 months",
     },
   ];
 
@@ -140,7 +127,7 @@ const WorkExperience = () => {
                   </div>
 
                   {/* Responsibilities */}
-                  <ul className="space-y-2 mb-4">
+                  {/* <ul className="space-y-2 mb-4">
                     {exp.responsibilities.map((resp, respIndex) => (
                       <li
                         key={respIndex}
@@ -150,17 +137,17 @@ const WorkExperience = () => {
                         <span>{resp}</span>
                       </li>
                     ))}
-                  </ul>
+                  </ul> */}
 
                   {/* Growth Highlight */}
-                  <div className="bg-indigo-600/10 border border-indigo-500/30 rounded-lg p-3">
+                  {/* <div className="bg-indigo-600/10 border border-indigo-500/30 rounded-lg p-3">
                     <div className="flex items-start gap-2">
                       <span className="text-yellow-400 text-xl">⭐</span>
                       <p className="text-indigo-300 text-sm font-medium">
                         {exp.growth}
                       </p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ))}

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SummaryScene from "../components/SummaryScene";
@@ -8,7 +8,9 @@ gsap.registerPlugin(ScrollTrigger);
 const FeaturedProjects = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
-  const projectsRef = useRef(null);
+  const buttonRef = useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -24,18 +26,16 @@ const FeaturedProjects = () => {
         opacity: 0,
       });
 
-      // Projects animation
-      const projects = projectsRef.current.querySelectorAll(".project-card");
-      gsap.from(projects, {
+      // Button animation
+      gsap.from(buttonRef.current, {
         scrollTrigger: {
-          trigger: projectsRef.current,
-          start: "top 80%",
+          trigger: sectionRef.current,
+          start: "top 70%",
           end: "top 40%",
           scrub: 1,
         },
-        y: 80,
+        y: 60,
         opacity: 0,
-        stagger: 0.3,
       });
     }, sectionRef);
 
@@ -44,44 +44,41 @@ const FeaturedProjects = () => {
 
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "a2i-Dashboard",
       problem:
-        "Client needed a scalable online store with real-time inventory management and secure payment processing.",
+        "System needed Report Template Module, Activity Log, and Action Log features.",
       solution:
-        "Built a full-stack e-commerce solution using React, Next.js for SEO optimization, Laravel backend with MySQL for robust data handling, and integrated Stripe payment gateway.",
+        "Implemented features using Laravel, resolved all functional and UI issues through local testing.",
       impact:
-        "Increased online sales by 150% in 3 months. Reduced cart abandonment rate by 40% through optimized checkout flow.",
-      tech: ["React", "Next.js", "Laravel", "MySQL"],
+        "Successfully deployed to Dev and UAT servers. Managed fixes via CodeLab.",
+      tech: ["Laravel", "CodeLab", "Testing"],
     },
     {
-      title: "Corporate Dashboard & Analytics",
-      problem:
-        "Company struggled with scattered data across multiple platforms, making decision-making slow and inefficient.",
+      title: "Mocat",
+      problem: "Legacy system running on Laravel 5.1 needed modernization.",
       solution:
-        "Developed a centralized dashboard with real-time data visualization, automated reporting, and role-based access control using React and Laravel REST APIs.",
+        "Upgraded from Laravel 5.1 to Laravel 10, performed full system cross-checks and resolved syntax issues.",
       impact:
-        "Reduced report generation time from 3 hours to 5 minutes. Improved team productivity by 60% through instant data access.",
-      tech: ["React", "Laravel", "MySQL", "Chart.js"],
+        "Deployed to UAT, fixed issues via CodeLab, then production deployment with live issue handling.",
+      tech: ["Laravel", "Migration", "CodeLab"],
     },
     {
-      title: "Booking Management System",
-      problem:
-        "Service-based business faced double bookings and manual scheduling errors causing customer dissatisfaction.",
+      title: "BIDA",
+      problem: "System required comprehensive automated testing coverage.",
       solution:
-        "Created an automated booking system with conflict detection, email notifications, and customer self-service portal. Comprehensive Cypress testing ensured reliability.",
+        "Conducted end-to-end automation testing using Cypress covering key workflows.",
       impact:
-        "Eliminated double bookings completely. Customer satisfaction increased by 85%. Saved 20 hours/week in manual scheduling.",
-      tech: ["React", "Laravel", "MySQL", "Cypress"],
+        "Ensured system stability and reliability through automated test coverage.",
+      tech: ["Cypress", "E2E Testing", "Automation"],
     },
     {
-      title: "Content Management Platform",
-      problem:
-        "Media company needed a custom CMS for managing articles, videos, and user engagement with SEO optimization.",
+      title: "BTB",
+      problem: "Application needed comprehensive quality assurance validation.",
       solution:
-        "Built a headless CMS with Next.js frontend for optimal performance, Laravel backend for content management, and implemented caching strategies for fast load times.",
+        "Performed Black Box, Functional (Integration, System, UAT, Smoke, Sanity, Regression), and API Testing.",
       impact:
-        "Improved page load speed by 70%. Organic traffic increased by 120% within 6 months. Content publishing time reduced by 50%.",
-      tech: ["Next.js", "Laravel", "MySQL", "SEO"],
+        "Validated system quality through comprehensive testing methodologies using Postman.",
+      tech: ["Postman", "API Testing", "QA"],
     },
   ];
 
@@ -107,85 +104,93 @@ const FeaturedProjects = () => {
             </span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-cyan-500 mx-auto rounded-full"></div>
-          <p className="mt-6 text-gray-400 text-lg max-w-2xl mx-auto">
-            Real projects, real impact — solving business problems with code
-          </p>
         </div>
 
-        {/* Projects Grid */}
-        <div ref={projectsRef} className="space-y-8 mb-12">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="project-card bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-3xl p-6 sm:p-8 hover:border-indigo-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10"
+        {/* Project Slider */}
+        <div className="flex flex-col items-center w-full mb-12">
+          <div className="flex items-center justify-center w-full mb-6">
+            <button
+              onClick={() =>
+                setCurrentIndex(
+                  currentIndex === 0 ? projects.length - 1 : currentIndex - 1,
+                )
+              }
+              className="text-2xl text-indigo-400 hover:text-white px-4 py-2 rounded-full focus:outline-none"
+              aria-label="Previous Project"
             >
-              {/* Project Title */}
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6">
-                {project.title}
-              </h3>
-
-              {/* Content Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-                {/* Problem */}
-                <div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-2xl">❗</span>
-                    <h4 className="text-lg font-semibold text-red-400">
-                      Problem
-                    </h4>
-                  </div>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    {project.problem}
-                  </p>
+              &#8592;
+            </button>
+            <span className="mx-4 text-lg text-gray-300 font-semibold">
+              {currentIndex + 1} / {projects.length}
+            </span>
+            <button
+              onClick={() =>
+                setCurrentIndex(
+                  currentIndex === projects.length - 1 ? 0 : currentIndex + 1,
+                )
+              }
+              className="text-2xl text-indigo-400 hover:text-white px-4 py-2 rounded-full focus:outline-none"
+              aria-label="Next Project"
+            >
+              &#8594;
+            </button>
+          </div>
+          <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-2xl p-6 w-full max-w-3xl">
+            {/* Project Title */}
+            <h4 className="text-xl sm:text-2xl font-bold text-white mb-4 text-center">
+              {projects[currentIndex].title}
+            </h4>
+            {/* Content Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+              {/* Problem */}
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xl">❗</span>
+                  <h5 className="text-sm font-semibold text-red-400">
+                    Problem
+                  </h5>
                 </div>
-
-                {/* Solution */}
-                <div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-2xl">💡</span>
-                    <h4 className="text-lg font-semibold text-yellow-400">
-                      Solution
-                    </h4>
-                  </div>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    {project.solution}
-                  </p>
-                </div>
-
-                {/* Impact */}
-                <div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-2xl">🚀</span>
-                    <h4 className="text-lg font-semibold text-green-400">
-                      Impact
-                    </h4>
-                  </div>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    {project.impact}
-                  </p>
-                </div>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {projects[currentIndex].problem}
+                </p>
               </div>
-
-              {/* Tech Stack */}
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((tech, techIndex) => (
-                  <span
-                    key={techIndex}
-                    className="px-3 py-1 bg-indigo-600/20 border border-indigo-500/30 text-indigo-300 rounded-full text-xs font-medium"
-                  >
-                    {tech}
-                  </span>
-                ))}
+              {/* Solution */}
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xl">💡</span>
+                  <h5 className="text-sm font-semibold text-yellow-400">
+                    Solution
+                  </h5>
+                </div>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {projects[currentIndex].solution}
+                </p>
+              </div>
+              {/* Impact */}
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xl">🚀</span>
+                  <h5 className="text-sm font-semibold text-green-400">
+                    Impact
+                  </h5>
+                </div>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {projects[currentIndex].impact}
+                </p>
               </div>
             </div>
-          ))}
-        </div>
-
-        {/* View All Projects Button */}
-        <div className="text-center">
-          <button className="px-8 py-3 bg-gradient-to-r from-indigo-600 to-cyan-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300 hover:scale-105">
-            View All Projects
-          </button>
+            {/* Tech Stack */}
+            <div className="flex flex-wrap gap-2 justify-center">
+              {projects[currentIndex].tech.map((tech, techIndex) => (
+                <span
+                  key={techIndex}
+                  className="px-3 py-1 bg-indigo-600/20 border border-indigo-500/30 text-indigo-300 rounded-full text-xs font-medium"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

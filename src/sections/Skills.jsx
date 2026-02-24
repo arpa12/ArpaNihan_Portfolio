@@ -143,35 +143,21 @@ const Skills = () => {
           </p>
         </div>
 
-        {/* Skills Grid */}
-        <div
-          ref={categoriesRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+        {/* Skills List as single line per category */}
+        <div ref={categoriesRef} className="space-y-4">
           {skillCategories.map((category, index) => (
             <div
               key={index}
               className="skill-category bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-2xl p-6 hover:border-indigo-500/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-indigo-500/20"
             >
-              {/* Icon & Title */}
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-4xl">{category.icon}</span>
-                <h3 className="text-xl font-bold text-white">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-2xl">{category.icon}</span>
+                <span className="text-lg font-semibold text-white">
                   {category.title}
-                </h3>
-              </div>
-
-              {/* Skills List */}
-              <div className="space-y-2">
-                {category.skills.map((skill, skillIndex) => (
-                  <div
-                    key={skillIndex}
-                    className="flex items-center gap-2 text-gray-300 text-sm"
-                  >
-                    <span className="text-indigo-400">▹</span>
-                    <span>{skill}</span>
-                  </div>
-                ))}
+                </span>
+                <span className="text-gray-400 text-base">
+                  ({category.skills.join(", ")})
+                </span>
               </div>
             </div>
           ))}

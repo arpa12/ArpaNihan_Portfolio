@@ -9,7 +9,6 @@ const ProfessionalSummary = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const contentRef = useRef(null);
-  const statsRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -36,31 +35,10 @@ const ProfessionalSummary = () => {
         y: 80,
         opacity: 0,
       });
-
-      // Stats animation
-      const statItems = statsRef.current.querySelectorAll(".stat-item");
-      gsap.from(statItems, {
-        scrollTrigger: {
-          trigger: statsRef.current,
-          start: "top 80%",
-          end: "top 50%",
-          scrub: 1,
-        },
-        y: 60,
-        opacity: 0,
-        stagger: 0.2,
-      });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
-
-  const stats = [
-    { value: "5+", label: "Years Experience" },
-    { value: "50+", label: "Projects Completed" },
-    { value: "30+", label: "Happy Clients" },
-    { value: "100%", label: "Success Rate" },
-  ];
 
   return (
     <section
@@ -97,67 +75,24 @@ const ProfessionalSummary = () => {
               <span className="text-indigo-400 font-semibold">
                 Full Stack Developer
               </span>{" "}
-              and Computer Science and Engineering graduate with hands-on
-              experience building scalable, high-performance web applications. I
-              focus on delivering structured, reliable, and user-centered
-              digital solutions that solve real-world problems.
+              and Computer Science and Engineering graduate focused on building
+              scalable, high-performance web applications that solve real-world
+              problems.
             </p>
 
             <p>
-              With a strong foundation in both front-end and back-end
-              development, I approach every project with{" "}
+              With strong front-end and back-end expertise, I prioritize{" "}
               <span className="text-cyan-400 font-semibold">
-                clean architecture and long-term maintainability
+                clean architecture and maintainable solutions
               </span>{" "}
-              in mind. My goal is to build systems that are efficient, secure,
-              and ready to grow with evolving business needs.
+              to ensure systems remain efficient, secure, and future-ready.
             </p>
 
             <p>
-              I am committed to continuous learning and professional growth,
-              always striving to enhance performance, usability, and overall
-              product quality. I take pride in collaborating effectively and
-              delivering software that creates measurable impact.
+              I continuously improve my skills, collaborate effectively, and aim
+              to deliver reliable software that creates meaningful impact.
             </p>
           </div>
-
-          {/* Skills Highlight */}
-          <div className="mt-8 flex flex-wrap gap-3">
-            {[
-              "HTML",
-              "CSS",
-              "JS",
-              "React",
-              "Next.js",
-              "Laravel",
-              "MySQL",
-              "Cypress",
-            ].map((skill) => (
-              <span
-                key={skill}
-                className="px-4 py-2 bg-gradient-to-r from-indigo-600/30 to-cyan-600/30 border border-indigo-500/50 text-indigo-300 rounded-full text-sm font-medium hover:scale-105 transition-transform duration-200"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Stats Grid */}
-        <div ref={statsRef} className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="stat-item bg-gradient-to-br from-indigo-600/20 to-cyan-600/20 backdrop-blur-sm border border-indigo-500/30 rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300"
-            >
-              <div className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent mb-2">
-                {stat.value}
-              </div>
-              <div className="text-gray-400 text-sm sm:text-base font-medium">
-                {stat.label}
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>
