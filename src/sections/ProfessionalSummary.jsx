@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Suspense, lazy } from "react";
+
 const SummaryScene = lazy(() => import("../components/SummaryScene"));
 
 gsap.registerPlugin(ScrollTrigger);
@@ -45,20 +46,19 @@ const ProfessionalSummary = () => {
     <section
       ref={sectionRef}
       id="summary"
-      className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black py-20"
+      className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black py-4"
     >
       {/* 3D Background */}
       <div className="absolute inset-0 z-0 opacity-20">
         <Suspense fallback={<div className="w-full h-full bg-black" />}>
-          {" "}
-          <SummaryScene />{" "}
+          <SummaryScene />
         </Suspense>
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 lg:px-24">
+      <div className="relative z-10 max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
         {/* Section Title */}
-        <div ref={titleRef} className="text-center mb-16">
+        <div ref={titleRef} className="text-center mb-12">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
             Professional{" "}
             <span className="bg-gradient-to-r from-indigo-500 to-cyan-500 bg-clip-text text-transparent">
@@ -71,30 +71,18 @@ const ProfessionalSummary = () => {
         {/* Summary Content */}
         <div
           ref={contentRef}
-          className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-3xl p-8 sm:p-12 mb-16 shadow-2xl"
+          className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-3xl p-2 sm:p-4 mb-16 shadow-2xl"
         >
           <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
             <p>
-              I'm a{" "}
-              <span className="text-indigo-400 font-semibold">
-                Full Stack Developer
-              </span>{" "}
-              and Computer Science and Engineering graduate focused on building
-              scalable, high-performance web applications that solve real-world
-              problems.
+              I'm <span className="text-indigo-400 font-semibold">Arpa Nihan</span>, a Junior Software Developer with a B.Sc in Computer Science & Engineering from Daffodil International University. Currently working at Business Automation Ltd., I specialize in web development, manual & API testing, and building modern web applications. I also have experience with WordPress, graphic design, and UI-focused solutions. 
             </p>
-
             <p>
-              With strong front-end and back-end expertise, I prioritize{" "}
-              <span className="text-cyan-400 font-semibold">
-                clean architecture and maintainable solutions
-              </span>{" "}
-              to ensure systems remain efficient, secure, and future-ready.
+              My focus is on <span className="text-cyan-400 font-semibold">clean, scalable architecture</span> and delivering high-quality software solutions. I thrive in collaborative environments, continuously improving my skills to ensure systems remain efficient, secure, and future-ready.
             </p>
-
+            {/* Skills as a Sentence */}
             <p>
-              I continuously improve my skills, collaborate effectively, and aim
-              to deliver reliable software that creates meaningful impact.
+              I am skilled in <span className="text-cyan-400 font-semibold">HTML & CSS</span>, <span className="text-cyan-400 font-semibold">Bootstrap</span>, <span className="text-cyan-400 font-semibold">JavaScript</span>, <span className="text-cyan-400 font-semibold">React</span>, <span className="text-cyan-400 font-semibold">Next.js</span>, <span className="text-cyan-400 font-semibold">Laravel</span>, <span className="text-cyan-400 font-semibold">MySQL</span>, <span className="text-cyan-400 font-semibold">WordPress</span>, <span className="text-cyan-400 font-semibold">Postman</span>, <span className="text-cyan-400 font-semibold">Cypress</span>, <span className="text-cyan-400 font-semibold">CodeLab</span>, and <span className="text-cyan-400 font-semibold">Newman</span>.
             </p>
           </div>
         </div>

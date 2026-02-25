@@ -59,8 +59,8 @@ const Hero = () => {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 flex min-h-screen items-center justify-center px-6 sm:px-12 lg:px-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl w-full">
+      <div className="relative z-10 flex min-h-screen items-center justify-center px-2 sm:px-4 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center max-w-7xl w-full">
           {/* Left Side - Text Content */}
           <div className="text-center lg:text-left space-y-6">
             <div className="space-y-2">
@@ -94,11 +94,11 @@ const Hero = () => {
 
             <div
               ref={ctaRef}
-              className="flex gap-2 sm:gap-3 justify-center lg:justify-start"
+              className="flex gap-1 sm:gap-2 justify-center lg:justify-start"
             >
               <a
                 href="#featured-projects"
-                className="px-3 sm:px-5 py-2 text-sm sm:text-base bg-gradient-to-r from-indigo-600 to-cyan-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300 hover:scale-105 whitespace-nowrap"
+                className="px-2 sm:px-3 py-1 text-sm sm:text-base bg-gradient-to-r from-indigo-600 to-cyan-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300 hover:scale-105 whitespace-nowrap"
               >
                 View Projects
               </a>
@@ -106,14 +106,14 @@ const Hero = () => {
                 href="https://www.linkedin.com/in/arpanihan/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 sm:px-5 py-2 text-sm sm:text-base border-2 border-indigo-500 text-indigo-400 rounded-full font-semibold hover:bg-indigo-500/10 transition-all duration-300 hover:scale-105 whitespace-nowrap"
+                className="px-2 sm:px-3 py-1 text-sm sm:text-base border-2 border-indigo-500 text-indigo-400 rounded-full font-semibold hover:bg-indigo-500/10 transition-all duration-300 hover:scale-105 whitespace-nowrap"
               >
                 Contact Me
               </a>
               <a
                 href="/src/assets/resume.pdf"
                 download="Arpa_Nihan_Resume.pdf"
-                className="px-3 sm:px-5 py-2 text-sm sm:text-base bg-gradient-to-r from-indigo-600 to-cyan-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105 flex items-center gap-1 sm:gap-2 whitespace-nowrap"
+                className="px-2 sm:px-3 py-1 text-sm sm:text-base bg-gradient-to-r from-indigo-600 to-cyan-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105 flex items-center gap-1 sm:gap-2 whitespace-nowrap"
               >
                 <svg
                   className="w-4 h-4 sm:w-5 sm:h-5"
