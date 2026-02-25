@@ -14,7 +14,7 @@ const App = () => {
       {/* <WhatIDo /> */}
       <FeaturedProjects />
       <WorkExperience />
-      <Skills />
+      {/* <Skills /> */}
       <CallToAction />
     </>
   );
