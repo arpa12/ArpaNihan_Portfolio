@@ -1,167 +1,20 @@
-# Portfolio - Pure HTML/CSS/JavaScript
+# Portfolio Website
 
-## 🎉 Clean & Simple!
+A professional portfolio website built with pure HTML, CSS, and JavaScript.
 
-A professional portfolio website built with pure **HTML**, **CSS**, and **JavaScript** - NO frameworks, NO build tools, NO dependencies!
+## Features
 
-## 📁 Project Structure
+- Responsive design
+- Smooth animations and transitions
+- No frameworks or build tools required
+- Works directly in the browser
 
-```
-ArpaNihan_Portfolio/
-├── index.html          ← Main HTML file
-├── styles.css          ← All styling
-├── script.js           ← Animations & interactions
-├── assets/             ← Images and resume
-│   ├── profileImage.png
-│   ├── a2i.png
-│   ├── mocat.png
-│   ├── bida.png
-│   ├── btb.png
-│   └── resume.pdf
-└── README.md
-```
+## Usage
 
-## 🚀 How to Use
+Open `index.html` in your web browser to view the portfolio.
 
-### Option 1: Open Directly
-Simply double-click `index.html` to open it in your browser.
+## Technologies
 
-### Option 2: Use a Local Server (Recommended)
-For better performance:
-
-```bash
-# Using Python
-python -m http.server 8000
-
-# Using Node.js (http-server)
-npx http-server
-
-# Using PHP
-php -S localhost:8000
-```
-
-Then open: `http://localhost:8000`
-
-## ✨ Features Implemented
-
-### ✅ Animations (No GSAP)
-- **CSS Keyframe Animations** - Hero section entrance animations
-- **Intersection Observer API** - Scroll-triggered reveals
-- **CSS Transitions** - Smooth hover effects and transforms
-- **Parallax Scrolling** - Background movement on scroll
-
-### ✅ 3D Effects Removed
-- Replaced Three.js 3D backgrounds with **CSS gradients**
-- Animated gradients using CSS animations
-- Glow effects with CSS filters and pseudo-elements
-
-### ✅ No Build Tools
-- No Vite, no npm, no bundler
-- Just open the HTML file and it works!
-- All code is minification-ready
-
-### ✅ Fully Responsive
-- Mobile-first design
-- Breakpoints for tablets and desktops
-- Touch-friendly buttons and interactions
-
-## 🎨 Technology Stack
-
-**Frontend:**
-- Pure HTML5
-- Pure CSS3 (no frameworks)
-- Vanilla JavaScript (ES6+)
-
-**Features:**
-- CSS Keyframe Animations
-- Intersection Observer API for scroll effects
-- CSS Grid & Flexbox layouts
-- Fully responsive design
-- No build process required
-
-## � Customization Guide
-
-### Change Colors
-All colors are defined in `styles.css`. Look for:
-- `#6366f1` (Indigo)
-- `#22d3ee` (Cyan)
-- Modify gradient colors in `.gradient-text` class
-
-### Add More Sections
-1. Add HTML in `index.html`
-2. Add CSS styles in `styles.css`
-3. Add `.scroll-reveal` class for scroll animations
-
-### Enable Optional Features
-In `script.js`, uncomment:
-- Typing effect
-- Scroll to top button
-- Active section highlighting
-
-## 🌐 Browser Support
-
-- ✅ Chrome/Edge (latest)
-- ✅ Firefox (latest)
-- ✅ Safari (latest)
-- ✅ Mobile browsers
-
-Uses modern APIs:
-- Intersection Observer
-- CSS Grid & Flexbox
-- CSS Custom Properties
-- ES6+ JavaScript
-
-## 📦 Deployment
-
-### GitHub Pages
-1. Rename `vanilla-index.html` to `index.html`
-2. Commit and push to GitHub
-3. Enable GitHub Pages in repository settings
-
-### Netlify / Vercel
-1. Drag and drop the folder to deploy
-2. Or connect your GitHub repository
-
-### Traditional Hosting
-Upload all files via FTP to your web host.
-
-## 🎯 Performance Benefits
-
-- ⚡ **Instant load** - No framework overhead
-- 📦 **Tiny size** - ~50KB total (HTML + CSS + JS)
-- 🚀 **No build time** - Edit and refresh
-- 🎨 **Pure web standards** - Works everywhere
-
-## 🐛 Troubleshooting
-
-**Images not loading?**
-- Make sure file paths in HTML match your folder structure
-- Use a local server instead of opening file directly
-
-**Animations not working?**
-- Check browser console for JavaScript errors
-- Ensure `script.js` is loading correctly
-
-**Styling looks off?**
-- Verify `styles.css` is linked in HTML
-- Check for CSS syntax errors
-
-## 💡 Tips
-
-1. **SEO**: Add meta tags in `<head>` for better SEO
-2. **Analytics**: Add Google Analytics script before `</body>`
-3. **Favicon**: Replace the icon link in `<head>`
-4. **Performance**: Images are already optimized in the assets folder
-
-## 📝 What's Next?
-
-- ✅ Portfolio is fully functional
-- ✅ No dependencies to maintain
-- ✅ Easy to customize
-- ✅ Ready to deploy
-
-**Enjoy your lightweight, framework-free portfolio! 🎉**
-
----
-
-Built with ❤️ using pure HTML, CSS, and JavaScript
+- HTML5
+- CSS3
+- Vanilla JavaScript
