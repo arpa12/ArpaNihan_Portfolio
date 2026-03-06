@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Download Statistics - Arpa Nihan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .history-section {
+            margin-top: 2rem;
+        }
+
+        .history-title {
+            color: #374151;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .history-list {
+            max-height: 400px;
+            overflow-y: auto;
+            background: #f9fafb;
+            border-radius: 10px;
+            padding: 1rem;
+        }
+
+        .history-item {
+            background: white;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .history-time {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .history-count {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 3rem;
+            color: #9ca3af;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        .refresh-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .refresh-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .note {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            color: #92400e;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Resume Download Statistics</h1>
+        <p class="subtitle">Track how many times your resume has been downloaded</p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalDownloads">0</div>
+                <div class="stat-label">Total Downloads</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="todayDownloads">0</div>
+                <div class="stat-label">Downloads Today</div>
+            </div>
+        </div>
+
+        <button class="refresh-btn" onclick="loadStats()">🔄 Refresh Statistics</button>
+
+        <div class="history-section">
+            <h2 class="history-title">Download History</h2>
+            <div class="history-list" id="historyList">
+                <div class="no-data">No downloads recorded yet</div>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>📌 Note:</strong> This tracking uses browser localStorage, so statistics are stored locally on this device. For production use, consider integrating Google Analytics or a backend tracking system to track all users globally.
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+    </div>
+
+    <script>
+        function loadStats() {
+            const downloadCount = parseInt(localStorage.getItem('resumeDownloadCount') || '0');
+            const downloadHistory = JSON.parse(localStorage.getItem('downloadHistory') || '[]');
+
+            // Update total downloads
+            document.getElementById('totalDownloads').textContent = downloadCount;
+
+            // Calculate today's downloads
+            const today = new Date().toDateString();
+            const todayDownloads = downloadHistory.filter(item => {
+                const itemDate = new Date(item.timestamp).toDateString();
+                return itemDate === today;
+            }).length;
+            document.getElementById('todayDownloads').textContent = todayDownloads;
+
+            // Display history
+            const historyList = document.getElementById('historyList');
+            if (downloadHistory.length === 0) {
+                historyList.innerHTML = '<div class="no-data">No downloads recorded yet</div>';
+            } else {
+                historyList.innerHTML = downloadHistory
+                    .reverse()
+                    .map(item => {
+                        const date = new Date(item.timestamp);
+                        const formattedDate = date.toLocaleString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                        return `
+                            <div class="history-item">
+                                <span class="history-time">📥 ${formattedDate}</span>
+                                <span class="history-count">#${item.count}</span>
+                            </div>
+                        `;
+                    })
+                    .join('');
+            }
+        }
+
+        // Load stats on page load
+        loadStats();
+
+        // Auto-refresh every 5 seconds
+        setInterval(loadStats, 5000);
+    </script>
+</body>
+</html>
