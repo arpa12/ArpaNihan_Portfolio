@@ -564,7 +564,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    white-space: nowrap;
+    white-space: normal;
 }
 
 /* ===================================
@@ -754,7 +754,13 @@ body {
     font-weight: bold;
     margin-bottom: 0.5rem;
     line-height: 1.1;
-    white-space: nowrap;
+    white-space: normal;
+}
+
+@media (min-width: 768px) {
+    .hero-title {
+        white-space: nowrap;
+    }
 }
 
 @media (min-width: 640px) {
@@ -1832,6 +1838,11 @@ body {
     .section {
         padding: 2.25rem 0;
     }
+
+    .hero-section {
+        padding-top: 6.5rem;
+        padding-bottom: 3.25rem;
+    }
     
     .btn {
         font-size: 0.8rem;
@@ -1863,6 +1874,10 @@ body {
 @media (max-width: 480px) {
     .logo-text {
         font-size: 1.35rem;
+    }
+
+    .hero-section {
+        padding-top: 6.25rem;
     }
     
     .hero-cta {
